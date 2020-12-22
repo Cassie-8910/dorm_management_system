@@ -1,22 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import DormManagement from '../components/DormManagement'
+import DormInfo from '../components/DormInfo'
+import SystemConfig from '../components/SystemConfig'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/home'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/home',
+    name: 'home',
+    redirect: '/home/dormManagement',
+    component: () => import('../views/Home'),
+    children: [
+      {
+        path: '/home/dormManagement',
+        name: 'dormManagement',
+        component: DormManagement
+      },
+      {
+        path: '/home/dormInfo',
+        name: 'dormInfo',
+        component: DormInfo
+      },
+      {
+        path: '/home/systemConfig',
+        name: 'systemConfig',
+        component: SystemConfig
+      }
+    ]
   }
 ]
 

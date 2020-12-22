@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 3030 --open true",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,6 +12,8 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.4.5",
     "vue": "^2.6.11",
+    "vue-axios": "^3.2.0",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
