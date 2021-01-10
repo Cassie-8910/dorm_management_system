@@ -10,7 +10,7 @@ import './plugins/element.js'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
-// axios.defaults.baseURL = 'http://localhost:3030'
+axios.defaults.baseURL = 'http://localhost:3030'
 Vue.use(ElementUI)
 // Vue.prototype.$http = axios
 

@@ -3,12 +3,9 @@
     <!--  头部  -->
     <el-header style="background-color: #B3C0D1">
       <el-row :gutter="10">
-        <el-col :span="10"  style="display: flex; align-items: center; justify-content: space-around">
-          <img src="../assets/dormitory.png" height="30">
+        <el-col :span="4"  style="display: flex; align-items: center; justify-content: space-between">
+          <img alt="" src="../assets/dormitory.png" height="30">
           <h3 style="font-weight: 500; font-family: 'Avenir', Helvetica, Arial, sans-serif">宿舍信息管理系统</h3>
-          <el-input v-model="searchStr" placeholder="查询学生信息" style="width: 50%">
-            <el-button type="primary" slot="append" icon="el-icon-search">查询</el-button>
-          </el-input>
         </el-col>
       </el-row>
     </el-header>
@@ -20,6 +17,7 @@
           <el-menu-item index="/home/dormInfo"><i class="el-icon-message" style="margin-right: 10px"></i>宿舍信息</el-menu-item>
           <el-menu-item index="/home/systemConfig"><i class="el-icon-setting" style="margin-right: 10px"></i>系统设置</el-menu-item>
         </el-menu>
+        <el-button type="primary" @click="logOut()" style="margin-top: 20px; margin-left: 20px; background-color: #70a1ff">退出登录</el-button>
       </el-aside>
       <!--   主题区域   -->
       <el-main style="background-color: #eee">
@@ -32,13 +30,17 @@
 <script>
 export default {
   name: 'Home',
-  data () {
-    return {
-      searchStr: ''
-    }
-  },
   methods: {
-
+    logOut () {
+      this.$confirm('该操作将退出登录，是否确定？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        localStorage.removeItem('token')
+        this.$router.push('/')
+      })
+    }
   }
 }
 </script>
