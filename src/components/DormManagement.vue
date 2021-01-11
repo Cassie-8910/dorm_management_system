@@ -309,7 +309,8 @@ export default {
           const url = `${baseApiUrl}/student`
           axios.post(url, formData, {
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+              Authentication: localStorage.getItem('token')
             }
           }).then(rs => {
             console.log('promise-rs:', rs)
@@ -343,6 +344,7 @@ export default {
           const url = `${baseApiUrl}/student?` + formData
           axios.put(url, formData, {
             headers: {
+              Authentication: localStorage.getItem('token')
               // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
           }).then(rs => {
@@ -363,7 +365,11 @@ export default {
       const queryData = this.queryCol + '=' + this.searchStr
       const url = `${baseApiUrl}/student/query?` + queryData
       console.log('url:' + url)
-      axios.get(url).then((rs) => {
+      axios.get(url, {
+        headers: {
+          Authentication: localStorage.getItem('token')
+        }
+      }).then((rs) => {
         this.tableData = []
         console.log(rs.data)
         rs.data.data.forEach(item => { this.tableData.push(item) })
@@ -391,7 +397,8 @@ export default {
         const url = `${baseApiUrl}/student?` + formData
         axios.delete(url, {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            Authentication: localStorage.getItem('token')
           }
         }).then(rs => {
           console.log('promise-rs:', rs)
