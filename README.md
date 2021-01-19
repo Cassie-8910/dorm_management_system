@@ -1,7 +1,7 @@
-# vue_shop
-
+# dorm_management_system
+> 宿舍信息管理系统前端部分
 ## Project setup
-```
+`````
 npm install
 ```
 
